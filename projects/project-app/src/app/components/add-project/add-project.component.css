@@ -1,0 +1,13 @@
+.example-card {
+    max-width: 500px;
+    margin: 50px auto;
+  
+    .example-container mat-form-field+mat-form-field {
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .address-class {
+      width: 420px;
+    }
+  }

@@ -1,0 +1,43 @@
+
+<div class="example-container">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>Add Employee Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="example-container">
+                <form [formGroup]="registerForm" (ngSubmit)="addEmployee()">
+                    <mat-form-field>
+                        <mat-label>Enter employee Id</mat-label>
+                        <input matInput  formControlName="employeeId" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field hintLabel="Min 3 characters">
+                        <mat-label>Enter first name</mat-label>
+                        <input matInput  minlength="3" formControlName="firstName" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Enter last name</mat-label>
+                        <input matInput  formControlName="lastName" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <mat-label>Enter your email</mat-label>
+                        <input  matInput placeholder="abc@example.com"   formControlName="email" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Enter mobile number</mat-label>
+                        <input  matInput   maxlength="10" (keypress)="keyPress($event)" formControlName="mobile" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="address-class">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="address" required></textarea>
+                    </mat-form-field>
+                    <br>
+                    <button mat-raised-button color="primary"  type="submit" [disabled]="!registerForm.valid">Submit</button>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,350 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "employee-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/employee-app",
+      "sourceRoot": "projects/employee-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/employee-app",
+            "index": "projects/employee-app/src/index.html",
+            "main": "projects/employee-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/employee-app/tsconfig.app.json",
+            "assets": [
+              "projects/employee-app/src/favicon.ico",
+              "projects/employee-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "projects/employee-app/src/styles.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/employee-app/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/employee-app/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "employee-app:build:production",
+              "extraWebpackConfig": "projects/employee-app/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "employee-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4201,
+            "publicHost": "http://localhost:4201",
+            "extraWebpackConfig": "projects/employee-app/webpack.config.js"
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "employee-app:build",
+            "extraWebpackConfig": "projects/employee-app/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/employee-app/tsconfig.spec.json",
+            "assets": [
+              "projects/employee-app/src/favicon.ico",
+              "projects/employee-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "projects/employee-app/src/styles.css",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "project-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/project-app",
+      "sourceRoot": "projects/project-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/project-app",
+            "index": "projects/project-app/src/index.html",
+            "main": "projects/project-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/project-app/tsconfig.app.json",
+            "assets": [
+              "projects/project-app/src/favicon.ico",
+              "projects/project-app/src/assets"
+            
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "projects/project-app/src/styles.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/project-app/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/project-app/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "project-app:build:production",
+              "extraWebpackConfig": "projects/project-app/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "project-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4200,
+            "publicHost": "http://localhost:4200",
+            "extraWebpackConfig": "projects/project-app/webpack.config.js"
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "project-app:build",
+            "extraWebpackConfig": "projects/project-app/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/project-app/tsconfig.spec.json",
+            "assets": [
+              "projects/project-app/src/favicon.ico",
+              "projects/project-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "projects/project-app/src/styles.css",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "host-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/host-app",
+      "sourceRoot": "projects/host-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/host-app",
+            "index": "projects/host-app/src/index.html",
+            "main": "projects/host-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/host-app/tsconfig.app.json",
+            "assets": [
+              "projects/host-app/src/favicon.ico",
+              "projects/host-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "projects/host-app/src/styles.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/host-app/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/host-app/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "host-app:build:production",
+              "extraWebpackConfig": "projects/host-app/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "host-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4300,
+            "publicHost": "http://localhost:4300",
+            "extraWebpackConfig": "projects/host-app/webpack.config.js"
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "host-app:build",
+            "extraWebpackConfig": "projects/host-app/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/host-app/tsconfig.spec.json",
+            "assets": [
+              "projects/host-app/src/favicon.ico",
+              "projects/host-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "./assets"
+              }
+            ],
+            "styles": [
+              "projects/host-app/src/styles.css",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}

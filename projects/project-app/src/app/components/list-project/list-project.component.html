@@ -1,0 +1,33 @@
+<div class="mat-elevation-z8" id="table_class">
+  <h3 class="title">Project List</h3>
+  <mat-form-field>
+    <mat-label>Search </mat-label>
+    <input matInput placeholder="Enter first Name" #input>
+  </mat-form-field>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="searchByName(input.value)">Search</button>
+
+  <table mat-table *ngIf="getProjectList$" [dataSource]="projectList">
+
+    <!-- projectId Column -->
+    <ng-container matColumnDef="projectId">
+      <th mat-header-cell *matHeaderCellDef> Project Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.projectId}} </td>
+    </ng-container>
+
+    <!-- projectName Column -->
+    <ng-container matColumnDef="projectName">
+      <th mat-header-cell *matHeaderCellDef> Project Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+    </ng-container>
+
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
